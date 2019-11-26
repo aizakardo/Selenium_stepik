@@ -2,6 +2,8 @@ import os
 from selenium import webdriver
 import time 
 import math
+#import os
+
 
 link = "http://suninjuly.github.io/file_input.html"
 browser = webdriver.Chrome()
@@ -16,13 +18,15 @@ input3 = browser.find_element_by_css_selector('[name = ''email'']')
 input3.send_keys("v")
 
 #current_dir = os.path.abspath(os.path.dirname(__file__))    # получаем путь к директории текущего исполняемого файла 
-#file_path = os.path.join(current_dir, 'file.txt')           # добавляем к этому пути имя файла 
+#file_path = os.path.join(current_dir, 'file.txt')           # добавляем к этому пути имя файла, т.к. файл должен лежать в той же директории, что и исполняемый
 #element.send_keys(file_path)
-print(os.path.abspath(__file__))
-print(os.path.abspath(os.path.dirname(__file__)))
+
+browser.find_element_by_id('file').send_keys('C:\\test.txt')
 
 button = browser.find_element_by_css_selector("button.btn")
 button.click()
+time.sleep(5)
+browser.quit()
 
 # В этом задании в форме регистрации требуется загрузить текстовый файл.
 

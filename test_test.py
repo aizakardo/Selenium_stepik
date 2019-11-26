@@ -8,21 +8,17 @@ from selenium import webdriver
 
 browser = webdriver.Chrome()
 number = '897'
-link = "https://stepik.org/lesson/236903/step/1"
+link = "https://stepik.org/lesson/236905/step/1"
 browser.get(link)
-
-browser.implicitly_wait(3)
-
-# area = WebDriverWait(browser, 5).until(
-#         EC.element_to_be_clickable((By.CSS_SELECTOR, ".textarea"))
-
-area = browser.find_element_by_css_selector(".textarea")
 answer = math.log(int(time.time()))
+browser.implicitly_wait(3)
+area = browser.find_element_by_css_selector(".textarea")
 area.send_keys(str(answer))
 button = browser.find_element_by_css_selector(".submit-submission")
 button.click()
-time.sleep(10)
+text = browser.find_element_by_css_selector(".smart-hints__hint")
+correct_text = text.text
+b = str(correct_text)
+assert b == "Correct!", print(f" got {b}")
+time.sleep(6)
 browser.quit()
-
-find_text = browser.find_element_by_css_selector(".smart-hints__hint")
-assert find_text.text == "Correct"
